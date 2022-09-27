@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
-
 import classes from './MainHeader.module.css';
-import logo from '../image/1.png';
+import logo from '../image/crypto.png';
 
 const MainHeader = () => {
+
+
+
   return (
     <div className={classes.header}>
       <NavLink className={classes.logo} to='/home'>
@@ -15,6 +17,9 @@ const MainHeader = () => {
         </NavLink>
         <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/crypto'>
           News
+        </NavLink>
+        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/wallet'>
+          Wallet
         </NavLink>
       </div>
     </div >

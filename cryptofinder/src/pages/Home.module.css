@@ -14,13 +14,22 @@ h1 {
   color: black;
 }
 input {
-  padding-left: 5px;
-  font-size: 20px;
-  width: 250px;
-  height: 30px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  background-color: #fff;
+  width: 1000px;
+  border-radius: 8px;
+  border: 1px solid rgb(210, 208, 208);
+}
+
+input:focus {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 table {
-  width: auto;
+  width: 1000px;
   border-collapse: separate;
   border-spacing: 0 1em;
 }
