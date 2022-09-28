@@ -7,14 +7,13 @@ function News() {
 
     useEffect(() => {
         const fetchNews = async () => {
-            const response = await fetch(`https://newsdata.io/api/1/news?apikey=pub_11725c825253650dcaffc9ece84a723693775&country=au,de,ae&language=en&category=business`);
+            const response = await fetch(`https://saurav.tech/NewsAPI/top-headlines/category/health/in.json`);
             const data = await response.json();
-            setNews(data.results);
-
+            const dataz = data.articles.slice(0, 13);
+            setNews(dataz);
         }
         fetchNews();
     }, []);
-
 
 
     const ourNews = news.map((newsdata) =>
@@ -22,9 +21,9 @@ function News() {
             key={Math.random().toString()}
             id={Math.random().toString()}
             description={newsdata.description}
-            date={newsdata.pubDate}
-            url={newsdata.link}
-            img={newsdata.image_url === "null" ? <p>No Image Available</p> : newsdata.image_url}
+            date={newsdata.publishedAt}
+            url={newsdata.url}
+            img={newsdata.urlToImage === "null" ? <p>No Image Available</p> : newsdata.urlToImage}
             title={newsdata.title}
 
         />

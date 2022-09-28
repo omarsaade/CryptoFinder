@@ -2,19 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    crypto: [],
-    search: ''
+    show: false,
 };
 
 const uiSlice = createSlice({
     name: 'ui',
     initialState,
     reducers: {
-        display(state, action) {
-            state.crypto = action.payload;
-        },
-        puto(state, action) {
-            state.search += action.payload;
+        toggleCart(state) {
+            state.show = !state.show;
         }
     }
 });

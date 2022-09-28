@@ -26,6 +26,7 @@ body {
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 .header a.logo {
@@ -34,8 +35,8 @@ body {
 }
 
 .header a:hover {
-  background-color: #ddd;
-  color: black;
+  /* background-color: #ddd; */
+  color: #096ffa;
 }
 
 .header a.active {

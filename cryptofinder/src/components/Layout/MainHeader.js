@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from './MainHeader.module.css';
-import logo from '../image/crypto.png';
+import logo from '../../assets/crypto.png';
+import HeaderCartButton from './HeaderCartButton'
 
 const MainHeader = () => {
 
@@ -15,12 +16,13 @@ const MainHeader = () => {
         <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/home'>
           Market&nbsp;Cap
         </NavLink>
-        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/crypto'>
+        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/news'>
           News
         </NavLink>
-        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/wallet'>
-          Wallet
+        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/about'>
+          About us
         </NavLink>
+        <HeaderCartButton />
       </div>
     </div >
   );

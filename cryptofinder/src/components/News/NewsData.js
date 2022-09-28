@@ -1,4 +1,3 @@
-import React from 'react'
 import classes from './NewsData.module.css';
 
 function NewsData(props) {
