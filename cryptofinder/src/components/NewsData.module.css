@@ -1,19 +1,20 @@
 li {
+  margin-right: auto;
+  margin-bottom: 30px;
   width: 600px;
-  height: 350px;
+  height: fit-content;
   float: left;
   color: #fff;
   text-align: center;
   padding: 5px;
   box-shadow: 0px 0px 2px #ccc;
-  margin: 5px 0px 20px 0px;
   border-radius: 5px;
 }
 
-h2 {
+h3 {
   padding: 5px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 p {
   padding: 5px;
@@ -21,6 +22,19 @@ p {
   font-weight: 400 !important;
 }
 
-img {
-  width: 200px;
+li img {
+  width: 500px;
+}
+
+li img:hover {
+  opacity: 0.5;
+}
+
+li p {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.noImage {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }

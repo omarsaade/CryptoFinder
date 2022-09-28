@@ -1,17 +1,8 @@
 .modal {
-  /* margin: 0 0 auto auto; */
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-
   list-style: none;
-  border: 1px solid silver;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -21,11 +12,6 @@
   box-sizing: border-box;
 }
 
-.modal img {
-  width: "200px";
-  height: "200px";
-}
-
-ul {
+/* ul {
   list-style-type: none;
-}
+} */

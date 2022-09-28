@@ -1,52 +1,63 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Home.module.css"
 
 const Home = () => {
-
   const [search, setSearch] = useState("");
   const [crypto, setCrypto] = useState([]);
 
 
+  const inputSearchHandler = (event) => {
+    setSearch(event.target.value);
+  }
+
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCryptoData = async () => {
       const response = await fetch(`https://api.coinstats.app/public/v1/coins?skip=0&limit=50¤cy=USD`);
       const data = await response.json();
       setCrypto(data.coins);
     }
-    fetchData();
+    fetchCryptoData();
   }, []);
 
 
 
-  const cryptoData = crypto.filter((val) => {
+
+
+  let filteredCrypto = crypto.filter((val) => {
     return val.name.toLowerCase().includes(search.toLowerCase());
+  }).map((val, id) => {
+    return (
+      <tr id={id} key={id}>
+        <td className={classes.rank}>{val.rank}</td>
+        <td className={classes.logo}>
+          <a href={val.websiteUrl}>
+            <img src={val.icon} alt="logo" width="30px" />
+          </a>
+          <p>{val.name}</p>
+        </td>
+        <td className={classes.symbol}>{val.symbol}</td>
+        <td>${val.marketCap}</td>
+        <td>${val.price.toFixed(1)}</td>
+        <td>{val.availableSupply}</td>
+        <td>{val.volume}</td>
+      </tr>
+    );
   })
-    .map((val, id) => {
-      return (
-        <tr id={id} key={id}>
-          <td className={classes.rank}>{val.rank}</td>
-          <td className={classes.logo}>
-            <a href={val.websiteUrl}>
-              <img src={val.icon} alt="logo" width="30px" />
-            </a>
-            <p>{val.name}</p>
-          </td>
-          <td className={classes.symbol}>{val.symbol}</td>
-          <td>${val.marketCap}</td>
-          <td>${val.price.toFixed(1)}</td>
-          <td>{val.availableSupply}</td>
-          <td>{val.volume}</td>
-        </tr>
-      );
-    })
+
+
+
+
+
+  const cryptoData = (search.length > 0 && filteredCrypto.length === 0) ? <tr><td className={classes.notFound}>We Can't Find this Crypto , Please google it!</td></tr> : filteredCrypto;
+
 
 
 
   return (
     <div className={classes.App}>
       <h1>All Cryptocurrencies</h1>
-      <input type="text" placeholder="Search Markets" onChange={(e) => { setSearch(e.target.value) }} />
+      <input type="text" placeholder="Search Markets" onChange={inputSearchHandler} />
       <table>
         <thead>
           <tr className={classes.header}>

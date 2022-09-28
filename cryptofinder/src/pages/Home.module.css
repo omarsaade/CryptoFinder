@@ -1,5 +1,4 @@
 .App {
-  /* margin: -150px; */
   min-height: 100vh;
   height: auto;
   display: flex;
@@ -10,6 +9,7 @@
   font-size: 16px;
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
+
 h1 {
   color: black;
 }
@@ -59,6 +59,7 @@ tbody > tr {
   height: 50px;
 }
 
-* {
-  box-sizing: border-box;
+.notFound {
+  text-align: center;
+  font-weight: bold;
 }
