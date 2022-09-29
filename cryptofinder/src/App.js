@@ -4,7 +4,7 @@ import News from './pages/NewsPage';
 import MainHeader from './components/Layout/MainHeader';
 import CartItem from './components/Cart/CartItem';
 import { useSelector, useDispatch } from 'react-redux';
-import { uiActions } from './store/ui-slice';
+import { uiActions } from './store/Slice/ui-slice';
 import Cart from './components/Cart/Cart';
 import Signup from './components/Config/Signup/Signup';
 
@@ -29,6 +29,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/wallet" element={<CartItem />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/about" element={<Signup />} />
       </Routes>
     </div>
   );
