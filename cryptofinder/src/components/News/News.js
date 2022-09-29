@@ -32,7 +32,6 @@ function News() {
 
 
 
-
     return (
         <ul className={classes.modal}>
             {ourNews}

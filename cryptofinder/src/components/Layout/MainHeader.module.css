@@ -7,6 +7,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.headerBox {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background: rgb(255, 255, 255);
+  z-index: 2;
+  box-shadow: rgb(255 255 255) 0px -1px 0px 1px;
+}
+
 .header {
   overflow: hidden;
   background-color: #f1f1f1;

@@ -4,6 +4,9 @@ import classes from "./Market.module.css"
 const Market = () => {
     const [search, setSearch] = useState("");
     const [crypto, setCrypto] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [httpError, setHttpError] = useState()
+
 
 
     const inputSearchHandler = (event) => {
@@ -11,14 +14,43 @@ const Market = () => {
     }
 
 
+
+
     useEffect(() => {
         const fetchCryptoData = async () => {
             const response = await fetch(`https://api.coinstats.app/public/v1/coins?skip=0&limit=50¤cy=USD`);
+            if (!response.ok) {
+                //this is a constructor
+                throw new Error('Something went wrong!')
+            }
+
             const data = await response.json();
+            if (data === null) {
+                throw new Error('Check your URL');
+            }
+
             setCrypto(data.coins);
+            setIsLoading(false);
         }
-        fetchCryptoData();
+        fetchCryptoData().catch((error) => {
+            setIsLoading(false);
+            setHttpError(error.message);
+        });
     }, []);
+
+
+    if (isLoading) {
+        return <section className={classes.marketLoading}>
+            <p>Loading...</p>
+        </section>
+    }
+
+    if (httpError) {
+        return <section className={classes.marketError}>
+            <p>{httpError}</p>
+        </section>
+    }
+
 
 
 
@@ -60,7 +92,7 @@ const Market = () => {
     return (
         <div className={classes.App}>
             <h1>All Cryptocurrencies</h1>
-            <input type="text" placeholder="Search Markets" onChange={inputSearchHandler} />
+            <input className={classes.searchBox} type="text" placeholder="Search Markets" onChange={inputSearchHandler} />
             <table>
                 <thead>
                     <tr className={classes.header}>

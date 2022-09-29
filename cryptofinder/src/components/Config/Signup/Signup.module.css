@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+.signupBox {
+  list-style: none;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 80px;
+}
+
+.form {
+  margin-top: 100px;
+  border: 1px solid #ccc;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkbox {
+  margin-bottom: 15px;
+}
+
+.agree {
+  color: dodgerblue;
+}
+
+.signupBox .password {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.signupBox .text {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.signupBox .password:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.signupBox .text:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.signupBox button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.signupBox button:hover {
+  opacity: 1;
+}
+
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.cancelbtn,
+.signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.note {
+  font-size: 17px;
+}
+
+@media screen and (max-width: 300px) {
+  .cancelbtn,
+  .signupbtn {
+    width: 100%;
+  }
+}

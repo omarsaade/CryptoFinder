@@ -6,12 +6,22 @@
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+  position: relative;
+  margin-top: 200px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* ul {
-  list-style-type: none;
+/* .NewsLoading {
+  margin-top: 500px;
+  text-align: center;
+  color: white;
+}
+
+.NewsError {
+  margin-top: 500px;
+  text-align: center;
+  color: red;
 } */

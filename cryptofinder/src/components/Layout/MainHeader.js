@@ -8,23 +8,25 @@ const MainHeader = () => {
 
 
   return (
-    <div className={classes.header}>
-      <NavLink className={classes.logo} to='/home'>
-        <img src={logo} alt="Logo" width="150px" height='auto' />
-      </NavLink>
-      <div className={classes.headerRight}>
-        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/home'>
-          Market&nbsp;Cap
+    <div className={classes.headerBox}>
+      <div className={classes.header}>
+        <NavLink className={classes.logo} to='/home'>
+          <img src={logo} alt="Logo" width="150px" height='auto' />
         </NavLink>
-        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/news'>
-          News
-        </NavLink>
-        <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/about'>
-          About us
-        </NavLink>
-        <HeaderCartButton />
-      </div>
-    </div >
+        <div className={classes.headerRight}>
+          <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/home'>
+            Market&nbsp;Cap
+          </NavLink>
+          <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/news'>
+            News
+          </NavLink>
+          <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/about'>
+            About us
+          </NavLink>
+          <HeaderCartButton />
+        </div>
+      </div >
+    </div>
   );
 };
 
