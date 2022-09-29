@@ -38,9 +38,9 @@ const uiSlice = createSlice({
         },
         [fetchCartData.pending]: (state) => {
             state.notifications = {
-                status: '',
+                status: 'pending',
                 title: 'Pending ...',
-                message: 'Sending Books ...'
+                message: 'Loading...'
             };
         }
     }
