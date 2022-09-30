@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classes from "./Market.module.css"
 import { fetchCartData } from "../../store/Actions/cart-actions";
 import { useDispatch, useSelector } from 'react-redux'
 import { uiActions } from "../../store/Slice/ui-slice";
-
+// import Button from "../UI/Button/Button";
+let m = [];
 const Market = () => {
     const dispatch = useDispatch();
     const crypto = useSelector(state => state.ui.crypto);
     const search = useSelector(state => state.ui.search);
     const notifications = useSelector(state => state.ui.notifications);
     const { message, status } = notifications;
-
-
 
 
     const inputSearchHandler = (event) => {
@@ -39,6 +38,21 @@ const Market = () => {
 
 
 
+
+
+    const clickHandler = (a, b) => {
+        console.log(m);
+        m.push({ 'Price': a, 'Crypto': b });
+    }
+
+    // console.log(m);
+    //
+
+
+
+
+
+
     let filteredCrypto = crypto.filter((val) => {
         return val.name?.toLowerCase().includes(search.toLowerCase()) || '';
         // return val.name.toLowerCase().includes(search.toLowerCase());
@@ -53,12 +67,12 @@ const Market = () => {
                     <p>{val.name}</p>
                 </td>
                 <td className={classes.symbol}>{val.symbol}</td>
-                <td>${val.marketCap}</td>
-                <td>${val.price.toFixed(1)}</td>
-                <td>{val.availableSupply}</td>
-                <td>{val.volume}</td>
-                <td >
-                    <button className={classes.button}> Buy {val.symbol}</button>
+                <td>${val.marketCap.toFixed()}</td>
+                <td>${val.price.toFixed()}</td>
+                <td>{val.availableSupply.toFixed()}</td>
+                <td>{parseInt(val.volume).toFixed(1)}</td>
+                <td>
+                    <button className={classes.button} onClick={() => clickHandler(val.price, val.name)}>Buy {val.symbol}</button>
                 </td>
             </tr >
         );
@@ -67,15 +81,8 @@ const Market = () => {
 
 
 
-    const cryptoData = (search.length > 0 && filteredCrypto.length === 0) ? <tr>
-        <td>
-            <h4 className={classes.notFound}>
-                We Can't Find this Crypto , Please google it!
-            </h4>
-        </td>
-    </tr> : filteredCrypto;
-
-
+    const cryptoData = (search.length > 0 && filteredCrypto.length === 0) ? <tr><td>
+        <h4 className={classes.notFound}>We Can't Find this Crypto , Please google it!</h4></td></tr> : filteredCrypto;
 
 
     return (

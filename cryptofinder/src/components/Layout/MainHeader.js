@@ -21,7 +21,7 @@ const MainHeader = () => {
             News
           </NavLink>
           <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/about'>
-            About us
+            Sign Up
           </NavLink>
           <HeaderCartButton />
         </div>
