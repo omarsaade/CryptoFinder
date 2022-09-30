@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCartData } from "../Actions/cart-actions";
+import { fetchCartData } from "../Actions/crypto-actions";
 
 
 const initialState = {

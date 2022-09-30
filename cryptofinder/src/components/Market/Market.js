@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import classes from "./Market.module.css"
-import { fetchCartData } from "../../store/Actions/cart-actions";
+import { fetchCartData } from "../../store/Actions/crypto-actions";
 import { useDispatch, useSelector } from 'react-redux'
 import { uiActions } from "../../store/Slice/ui-slice";
-// import Button from "../UI/Button/Button";
-let m = [];
+import Button from "../UI/Button/Button";
+
+// let m = [];
 const Market = () => {
     const dispatch = useDispatch();
     const crypto = useSelector(state => state.ui.crypto);
@@ -40,13 +41,11 @@ const Market = () => {
 
 
 
-    const clickHandler = (a, b) => {
-        console.log(m);
-        m.push({ 'Price': a, 'Crypto': b });
-    }
-
+    // const clickHandler = (price, name, id) => {
     // console.log(m);
-    //
+    // m.push({ 'Price': price.toFixed(), 'name': name, 'id': id });
+    // }
+
 
 
 
@@ -70,9 +69,9 @@ const Market = () => {
                 <td>${val.marketCap.toFixed()}</td>
                 <td>${val.price.toFixed()}</td>
                 <td>{val.availableSupply.toFixed()}</td>
-                <td>{parseInt(val.volume).toFixed(1)}</td>
+                <td>{(+val.volume).toFixed(1)}</td>
                 <td>
-                    <button className={classes.button} onClick={() => clickHandler(val.price, val.name)}>Buy {val.symbol}</button>
+                    <Button className={classes.Button} price={val.price} name={val.name} id={id}>Buy {val.symbol}</Button>
                 </td>
             </tr >
         );
