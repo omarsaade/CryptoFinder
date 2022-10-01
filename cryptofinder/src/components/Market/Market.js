@@ -3,16 +3,19 @@ import classes from "./Market.module.css"
 import { fetchCartData } from "../../store/Actions/crypto-actions";
 import { useDispatch, useSelector } from 'react-redux'
 import { uiActions } from "../../store/Slice/ui-slice";
-import Button from "../UI/Button/Button";
+import { cartActions } from '../../store/Slice/cart-slice';
+import { sendCartData } from "../../store/Actions/cartSend-actions";
 
-// let m = [];
+
 const Market = () => {
     const dispatch = useDispatch();
     const crypto = useSelector(state => state.ui.crypto);
     const search = useSelector(state => state.ui.search);
     const notifications = useSelector(state => state.ui.notifications);
     const { message, status } = notifications;
+    // const items = useSelector(state => state.cart.items);
 
+    // console.log(items);
 
     const inputSearchHandler = (event) => {
         dispatch(uiActions.setSearch(event.target.value));
@@ -40,12 +43,15 @@ const Market = () => {
 
 
 
-
-    // const clickHandler = (price, name, id) => {
-    // console.log(m);
-    // m.push({ 'Price': price.toFixed(), 'name': name, 'id': id });
-    // }
-
+    const clickHandler = async (itemName, itemPrice, itemId, itemAmount) => {
+        const name = itemName;
+        const price = +itemPrice.toFixed();
+        const id = itemId;
+        const amount = itemAmount;
+        const addedCoin = { name, price, id, amount }
+        dispatch(cartActions.updateCart(addedCoin));
+        dispatch(sendCartData(addedCoin));
+    }
 
 
 
@@ -71,11 +77,11 @@ const Market = () => {
                 <td>{val.availableSupply.toFixed()}</td>
                 <td>{(+val.volume).toFixed(1)}</td>
                 <td>
-                    <Button className={classes.Button} price={val.price} name={val.name} id={id}>Buy {val.symbol}</Button>
+                    <button className={classes.buttonItem} onClick={() => clickHandler(val.name, val.price, id, 1)}>Buy {val.symbol}</button>
                 </td>
             </tr >
         );
-    })
+    });
 
 
 

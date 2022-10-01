@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sendCartData } from "../Actions/cartSend-actions";
+// import { sendCartData } from "../Actions/cartSend-actions";
 
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
     quantities: 0,
     totalAmount: 0
 };
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
@@ -41,32 +42,34 @@ const cartSlice = createSlice({
         },
 
     },
+
+    // extraReducers: {
+    //     [sendCartData.fulfilled]: (state, action) => {
+    //         state.items = action.payload;
+    //         state.notifications = {
+    //             status: 'success',
+    //             title: 'Success!',
+    //             message: 'Cart data sent successfully!'
+    //         };
+    //     },
     /*
-    extraReducers: {
-        [sendCartData.fulfilled]: (state, action) => {
-            state.cryptobox = action.payload;
-            state.notifications = {
-                status: 'success',
-                title: 'Success!',
-                message: 'Cart data sent successfully!'
-            };
-        },
-        [sendCartData.rejected]: (state, action) => {
-            state.notifications = {
-                status: 'error',
-                title: 'Error!',
-                message: action.error.message || 'Fetch failed'
-            };
-        },
-        [sendCartData.pending]: (state) => {
-            state.notifications = {
-                status: 'pending',
-                title: 'Pending ...',
-                message: 'Loading...'
-            };
-        }
+    [sendCartData.rejected]: (state, action) => {
+        state.notifications = {
+            status: 'error',
+            title: 'Error!',
+            message: action.error.message || 'Fetch failed'
+        };
+    },
+    [sendCartData.pending]: (state) => {
+        state.notifications = {
+            status: 'pending',
+            title: 'Pending ...',
+            message: 'Loading...'
+        };
     }
     */
+    // }
+
 });
 
 

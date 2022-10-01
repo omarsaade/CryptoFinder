@@ -21,27 +21,27 @@ function Cart(props) {
 
 
 
-    const modalActions = (
-        <div className={classes.actions}>
-            <button className={classes['button--alt']} onClick={props.onClose}>Close</button>
-            <button className={classes.button}>Order</button>
-        </div>
-    );
+    // const modalActions = (
+    //     <div className={classes.actions}>
+    //         <button className={classes['button--alt']} onClick={props.onClose}>Close</button>
+    //         <button className={classes.button}>Order</button>
+    //     </div>
+    // );
 
 
 
-    const cartModelContent = <Fragment>
-        {cartItems}
-        <div className={classes.total}>
-            <span>Total Amount</span>
-            <span>1000$</span>
-        </div>
-    </Fragment>
+    // const cartModelContent = <Fragment>
+    //     {cartItems}
+    //     <div className={classes.total}>
+    //         <span>Total Amount</span>
+    //         <span>1000$</span>
+    //     </div>
+    // </Fragment>
 
 
 
 
-    const isSubmittingModelContent = <p>Sending Order data...</p>;
+    // const isSubmittingModelContent = <p>Sending Order data...</p>;
 
 
 
@@ -52,7 +52,7 @@ function Cart(props) {
     return (
 
         <Modal onClose={props.onClose}>
-            {cartModelContent}
+            {/* {cartModelContent} */}
         </Modal>
 
     )

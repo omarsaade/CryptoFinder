@@ -79,3 +79,22 @@ tbody > tr {
   text-align: center;
   color: red;
 }
+
+.buttonItem {
+  background-color: #347adb;
+  text-align: center;
+  color: white;
+  text-align: center;
+  padding: 7px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.buttonItem:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: #096ffa;
+}
