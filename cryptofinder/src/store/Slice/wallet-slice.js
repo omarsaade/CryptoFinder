@@ -13,6 +13,8 @@ const walletSlice = createSlice({
     initialState,
     reducers: {
         displayCart(state, action) {
+
+            // console.log(state.walletItems);
             //     const updatedTotalAmount = state.totalAmount + action.payload.price * action.payload.amount;
             //     const updatedTotalQuantities = state.quantities + action.payload.amount;
 

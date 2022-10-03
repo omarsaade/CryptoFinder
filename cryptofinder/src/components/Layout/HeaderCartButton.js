@@ -11,6 +11,9 @@ function HeaderCartButton() {
     const show = useSelector(state => state.ui.show);
     const walletItems = useSelector(state => state.wallet.walletItems);
 
+
+    // console.log(walletItems);
+
     const showCartHandler = () => {
         dispatch(uiActions.toggleCart());
         dispatch(fetchWalletData());
