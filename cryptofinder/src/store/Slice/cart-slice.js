@@ -42,34 +42,6 @@ const cartSlice = createSlice({
         },
 
     },
-
-    // extraReducers: {
-    //     [sendCartData.fulfilled]: (state, action) => {
-    //         state.items = action.payload;
-    //         state.notifications = {
-    //             status: 'success',
-    //             title: 'Success!',
-    //             message: 'Cart data sent successfully!'
-    //         };
-    //     },
-    /*
-    [sendCartData.rejected]: (state, action) => {
-        state.notifications = {
-            status: 'error',
-            title: 'Error!',
-            message: action.error.message || 'Fetch failed'
-        };
-    },
-    [sendCartData.pending]: (state) => {
-        state.notifications = {
-            status: 'pending',
-            title: 'Pending ...',
-            message: 'Loading...'
-        };
-    }
-    */
-    // }
-
 });
 
 

@@ -1,4 +1,4 @@
-.cart-item {
+.walletItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,8 +7,10 @@
   margin: 1rem 0;
 }
 
-.cart-item h2 {
-  margin: 0 0 0.5rem 0;
+.walletItem .hname {
+  /* margin: 0 0 0.5rem 0; */
+  margin-left: -20px;
+  margin-bottom: 20px;
   color: #363636;
 }
 
@@ -17,6 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 20px;
 }
 
 .price {
@@ -43,7 +46,7 @@
   }
 }
 
-.cart-item button {
+.walletItem button {
   font: inherit;
   font-weight: bold;
   font-size: 1.25rem;
@@ -58,8 +61,12 @@
   margin: 0.25rem;
 }
 
-.cart-item button:hover,
-.cart-item button:active {
+.walletItem button:hover,
+.walletItem button:active {
   background-color: #8a2b06;
   color: white;
+}
+
+.liItem {
+  width: 778px;
 }

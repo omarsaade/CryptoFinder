@@ -6,8 +6,7 @@ import CartItem from './components/Cart/CartItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from './store/Slice/ui-slice';
 import Cart from './components/Cart/Cart';
-import Signup from './components/Config/Signup/Signup';
-
+import AuthForm from './components/Auth/AuthForm';
 
 
 function App() {
@@ -28,8 +27,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/wallet" element={<CartItem />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/about" element={<Signup />} />
+        <Route path="/login" element={<AuthForm />} />
+        <Route path="/login" element={<AuthForm />} />
       </Routes>
     </div>
   );

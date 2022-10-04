@@ -2,20 +2,28 @@ import React, { Fragment } from 'react'
 import Modal from '../UI/Modal/Modal';
 import classes from './Cart.module.css'
 import CartItem from './CartItem';
+import { useSelector, useDispatch } from 'react-redux';
+// import { fetchWalletData } from "../../store/Actions/fetchcart-actions";
+
+
 
 function Cart(props) {
 
-
-
-
+    const walletItems = useSelector(state => state.wallet.walletItems);
+    const totalAmount = useSelector(state => state.wallet.totalAmount);
     const cartItems = (
         <ul className={classes['cart-items']}>
-            <CartItem
-                key={Math.random()}
-                name="bitcoin"
-                amount="4"
-                price="40$"
-            />
+            {walletItems.map((item) => (
+                <CartItem
+                    key={item.id}
+                    amount={item.amount}
+                    name={item.name}
+                    price={item.price}
+                // onRemove={cartItemRemoveHandler.bind(null, item.id)}
+                // onAdd={cartItemAddHandler.bind(null, item)}
+                />
+            ))
+            }
         </ul>
     );
 
@@ -30,13 +38,13 @@ function Cart(props) {
 
 
 
-    // const cartModelContent = <Fragment>
-    //     {cartItems}
-    //     <div className={classes.total}>
-    //         <span>Total Amount</span>
-    //         <span>1000$</span>
-    //     </div>
-    // </Fragment>
+    const cartModelContent = <Fragment>
+        {cartItems}
+        <div className={classes.total}>
+            <span>Total Amount</span>
+            <span>{totalAmount}$</span>
+        </div>
+    </Fragment>
 
 
 
@@ -52,7 +60,8 @@ function Cart(props) {
     return (
 
         <Modal onClose={props.onClose}>
-            {/* {cartModelContent} */}
+            {cartModelContent}
+            {/* {cartItems} */}
         </Modal>
 
     )

@@ -18,12 +18,23 @@ export const fetchWalletData = createAsyncThunk(
         }
 
 
+        const sum = transformedData.map((item) => {
+            const T = item.price * item.amount;
+            return T;
+        })
+        //Total Price
+        const totalPrice = sum.reduce((partialSum, a) => partialSum + a, 0);
 
-        //                Deep clone
+        //Qunatity
+        const quantity = transformedData.length;
+
+
+        //Deep clone is required
         var Tb = JSON.parse(JSON.stringify(transformedData));
 
-
         let new_obj = {}
+        // or
+        // let new_obj = new Object();
         for (let transaction of Tb) {
             if (new_obj[transaction.name]) {
 
@@ -31,43 +42,32 @@ export const fetchWalletData = createAsyncThunk(
             } else {
                 new_obj[transaction.name] = { ...transaction }
             }
+
         }
-        // console.log(new_obj);
-        let new_arr = Object.values(new_obj)
-        console.log(new_arr);
+        let newArr = Object.values(new_obj);
 
 
 
 
 
-        // console.log("Afterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
 
+        // let obj = {};
+        // for (let trans of Tb) {
+        //     if (obj.trans.name) {
+        //         obj.trans.name.amount += trans.amount;
+        //     } else {
+        //         obj.trans.name = { ...trans }
+        //     }
+        // }
 
-        // const l = [
-        //     { id: 0, amount: 3, name: 'Bitcoin', price: 19592 },
-        //     { id: 0, amount: 2, name: 'Etherum', price: 19592 },
-        //     { id: 3, amount: 1, name: 'USD Coin', price: 1 },
-        //     { id: 4, amount: 2, name: 'BNB', price: 286 },
+        // let m = Object.values(obj);
+        // console.log(m);
 
-        // ];
-
-
-
-
-
-        // const sum = transformedData.map((item, index) => {
-        //     const T = item.price * item.amount;
-        //     return T;
-        // })
-        // const totalPrice = sum.reduce((partialSum, a) => partialSum + a, 0); //41291
-        // const Quantity = transformedData.length;
-
-        // (4)[{… }, {… }, {… }, {… }]
-        // { id: 0, amount: 1, name: 'Bitcoin', price: 19592 }
-        // { id: 0, amount: 1, name: 'Bitcoin', price: 19592 }
-        // { id: 1, amount: 1, name: 'Ethereum', price: 1322 }
-        // { id: 1, amount: 1, name: 'Ethereum', price: 1322 }
-
+        return {
+            newArr,
+            totalPrice,
+            quantity
+        }
 
 
     }

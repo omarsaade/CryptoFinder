@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { uiActions } from "../../store/Slice/ui-slice";
 import { cartActions } from '../../store/Slice/cart-slice';
 import { sendCartData } from "../../store/Actions/cartSend-actions";
-
+import { fetchWalletData } from "../../store/Actions/fetchcart-actions";
 
 const Market = () => {
     const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const Market = () => {
 
     useEffect(() => {
         dispatch(fetchCartData());
+        dispatch(fetchWalletData());
     }, [dispatch]);
 
 
@@ -51,6 +52,7 @@ const Market = () => {
         const addedCoin = { name, price, id, amount }
         dispatch(cartActions.updateCart(addedCoin));
         dispatch(sendCartData(addedCoin));
+        dispatch(fetchWalletData());
     }
 
 

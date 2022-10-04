@@ -4,9 +4,10 @@ import { fetchWalletData } from "../Actions/fetchcart-actions";
 
 const initialState = {
     walletItems: [],
-    // quantities: 0,
-    // totalAmount: 0
+    quantities: 0,
+    totalAmount: 0
 };
+
 
 const walletSlice = createSlice({
     name: 'wallet',
@@ -47,7 +48,9 @@ const walletSlice = createSlice({
 
     extraReducers: {
         [fetchWalletData.fulfilled]: (state, action) => {
-            state.walletItems = action.payload;
+            state.walletItems = action.payload.newArr;
+            state.quantities = action.payload.quantity;
+            state.totalAmount = action.payload.totalPrice;
             // state.notifications = {
             // status: 'success',
             // title: 'Success!',

@@ -20,8 +20,8 @@ const MainHeader = () => {
           <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/news'>
             News
           </NavLink>
-          <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/about'>
-            Sign Up
+          <NavLink className={(navData) => navData.isActive ? classes.active : ''} to='/login'>
+            Login
           </NavLink>
           <HeaderCartButton />
         </div>

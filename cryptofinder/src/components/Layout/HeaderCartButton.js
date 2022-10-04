@@ -1,24 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './HeaderCartButton.module.css'
 import CartIcon from '../Cart/CartIcon'
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from '../../store/Slice/ui-slice';
 import { walletActions } from '../../store/Slice/wallet-slice';
-import { fetchWalletData } from '../../store/Actions/fetchcart-actions';
+// import { fetchWalletData } from '../../store/Actions/fetchcart-actions';
 
 function HeaderCartButton() {
     const dispatch = useDispatch();
-    const show = useSelector(state => state.ui.show);
-    const walletItems = useSelector(state => state.wallet.walletItems);
+    // const show = useSelector(state => state.ui.show);
+    const walletItems = useSelector(state => state.wallet.quantities);
 
-
-    // console.log(walletItems);
 
     const showCartHandler = () => {
         dispatch(uiActions.toggleCart());
-        dispatch(fetchWalletData());
+        // dispatch(fetchWalletData());
     }
 
+
+    // useEffect(() => {
+    //     dispatch(fetchWalletData());
+    // }, [dispatch])
 
 
     return (
@@ -28,7 +30,7 @@ function HeaderCartButton() {
                 <CartIcon />
             </span>
             <span>Crypto Wallet</span>
-            <span className={classes.badge}>2</span>
+            <span className={classes.badge}>{walletItems}</span>
         </button>
 
     )
