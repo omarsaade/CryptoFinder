@@ -1,17 +1,22 @@
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useEffect } from 'react';
 // import AuthContext from '../../store/auth-context';
 import classes from './AuthForm.module.css';
-// import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { authActions } from '../../store/Slice/auth-slice';
+import { useNavigate } from 'react-router-dom';
+
+
+
+let logoutTimer;
 
 const AuthForm = () => {
   const dispatch = useDispatch();
   // const history = useHistory();
+  const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const tokenData = useSelector(state => state.auth.tokenData);
 
-  // const authCtx = useContext(AuthContext);
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +25,18 @@ const AuthForm = () => {
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
+
+
+  useEffect(() => {
+    // console.log("hello");
+    if (tokenData) {
+      logoutTimer = setTimeout(dispatch(authActions.logout()), tokenData.duration); //1000ms
+    }
+  }, [tokenData, authActions.logout]);
+
+
+
+
 
 
 
@@ -78,10 +95,12 @@ const AuthForm = () => {
 
         // authCtx.login(data.idToken, expirationTime.toISOString());
         // history.replace('/');
+        navigate('/');
 
       })
       .catch((err) => {
         alert(err.message);
+        // console.log(err);
       });
   };
 

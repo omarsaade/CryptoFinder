@@ -23,7 +23,7 @@ function App() {
       <MainHeader />
       {show && <Cart onClose={toggleCartHandler} />}
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<News />} />
         <Route path="/home" element={<Home />} />
         <Route path="/news" element={<News />} />
         <Route path="/wallet" element={<CartItem />} />
