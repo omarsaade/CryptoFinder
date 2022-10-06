@@ -1,18 +1,17 @@
-.button {
-  background-color: #347adb;
-  text-align: center;
-  color: white;
-  text-align: center;
-  padding: 7px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 10px;
-  cursor: pointer;
+.logoutBtn {
+  padding: 0;
   border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.button:hover {
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-  background-color: #096ffa;
+.logoutBtn:hover {
+  color: #096ffa;
 }
+
+/* .logoutBtn:hover {
+  background-color: #096ffa;
+  color: white;
+} */

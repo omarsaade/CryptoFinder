@@ -1,40 +1,25 @@
-// import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux'
-// import { sendCartData } from '../../../store/Actions/cartSend-actions'
-// import classes from './Button.module.css';
-
-// const Button = (props) => {
-//     const dispatch = useDispatch();
-//     const price = +props.price.toFixed();
-//     const name = props.name;
-//     const id = props.id;
-//     const amount = 1;
-
-
-//     const clickHandler = () => {
-//         dispatch(cartActions.updateCart({ name, price, id, amount }));
-//     }
-
-
-
-//     //     useEffect(() => {
-//     //         dispatch(fetchCartData());
-//     // }, [dispatch]);
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { authActions } from '../../../store/Slice/auth-slice';
+import classes from './Button.module.css';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
+function Button() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
+    const handleClick = () => {
+        dispatch(authActions.logout());
+        navigate('/AuthForm');
+    }
 
+    return (
+        <button className={classes.logoutBtn} onClick={handleClick}>Logout</button>
+    )
+}
 
-//     return (
-
-//         <button className={classes.button} onClick={clickHandler}>
-//             {props.children}
-//         </button>
-
-//     );
-// };
-
-// export default Button;
+export default Button

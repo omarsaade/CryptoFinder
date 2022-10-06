@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-// import AuthContext from '../../store/auth-context';
+import { useState, useRef, useCallback } from 'react';
+import logo from '../../assets/crypto.png'
 import classes from './AuthForm.module.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { authActions } from '../../store/Slice/auth-slice';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-let logoutTimer;
+// let logoutTimer;
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const tokenData = useSelector(state => state.auth.tokenData);
+  let logoutTimer = useSelector(state => state.auth.logoutTimer);
 
 
   const [isLogin, setIsLogin] = useState(true);
@@ -27,12 +28,6 @@ const AuthForm = () => {
   };
 
 
-  useEffect(() => {
-    // console.log("hello");
-    if (tokenData) {
-      logoutTimer = setTimeout(dispatch(authActions.logout()), tokenData.duration); //1000ms
-    }
-  }, [tokenData, authActions.logout]);
 
 
 
@@ -91,11 +86,7 @@ const AuthForm = () => {
         const Data = [`${data.idToken}`, `${expirationTime.toISOString()}`];
 
         dispatch(authActions.login(Data));
-
-
-        // authCtx.login(data.idToken, expirationTime.toISOString());
-        // history.replace('/');
-        navigate('/');
+        navigate('/home');
 
       })
       .catch((err) => {
@@ -105,33 +96,45 @@ const AuthForm = () => {
   };
 
 
-  //
+  // useEffect(() => {
+  //   // console.log("hello");
+  //   if (tokenData) {
+  //     console.log(tokenData.duration);
+  //     logoutTimer = setTimeout(dispatch(authActions.logout()), tokenData.duration); //1000ms
+  //   }
+  // }, [tokenData]);
+
+
+
 
   return (
-    <section className={classes.auth}>
-      <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-      <form onSubmit={submitHandler}>
-        <div className={classes.control}>
-          <label htmlFor='email'>Your Email</label>
-          <input type='email' id='email' required ref={emailInputRef} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor='password'>Your Password</label>
-          <input type='password' id='password' required ref={passwordInputRef} />
-        </div>
-        <div className={classes.actions}>
-          {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
-          {isLoading && <p>Sending Request...</p>}
-          <button
-            type='button'
-            className={classes.toggle}
-            onClick={switchAuthModeHandler}
-          >
-            {isLogin ? 'Create new account' : 'Login with existing account'}
-          </button>
-        </div>
-      </form>
-    </section>
+    <>
+      <section className={classes.auth}>
+        <img className={classes.register} src={logo} alt="Logo" width="150px" height='auto' />
+        <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
+        <form onSubmit={submitHandler}>
+          <div className={classes.control}>
+            <label htmlFor='email'>Your Email</label>
+            <input type='email' id='email' required ref={emailInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='password'>Your Password</label>
+            <input type='password' id='password' required ref={passwordInputRef} />
+          </div>
+          <div className={classes.actions}>
+            {!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
+            {isLoading && <p>Sending Request...</p>}
+            <button
+              type='button'
+              className={classes.toggle}
+              onClick={switchAuthModeHandler}
+            >
+              {isLogin ? 'Create new account' : 'Login with existing account'}
+            </button>
+          </div>
+        </form>
+      </section>
+    </>
   );
 };
 

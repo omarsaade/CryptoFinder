@@ -49,8 +49,7 @@ body {
 }
 
 .header a.active {
-  background-color: #096ffa;
-  color: white;
+  color: #096ffa;
 }
 
 @media screen and (max-width: 500px) {

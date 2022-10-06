@@ -1,5 +1,5 @@
 .auth {
-  margin-top: 200px;
+  margin-top: 180px;
   margin-left: auto;
   margin-right: auto;
   /* width: 95%; */
@@ -73,4 +73,11 @@
 .actions .toggle:hover {
   background-color: transparent;
   color: rgb(210, 196, 196);
+}
+
+.register {
+  color: white;
+  background-color: white;
+  padding: 13px;
+  border-radius: 20px;
 }

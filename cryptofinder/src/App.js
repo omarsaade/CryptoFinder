@@ -7,13 +7,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from './store/Slice/ui-slice';
 import Cart from './components/Cart/Cart';
 import AuthForm from './components/Auth/AuthForm';
+import Logout from './pages/Logout';
+
 
 
 function App() {
   const dispatch = useDispatch();
   const show = useSelector(state => state.ui.show);
+  const userIsLoggedIn = useSelector(state => state.auth.userIsLoggedIn);
 
-
+  // console.log(userIsLoggedIn); // false
   const toggleCartHandler = () => {
     dispatch(uiActions.toggleCart());
   }
@@ -23,12 +26,14 @@ function App() {
       <MainHeader />
       {show && <Cart onClose={toggleCartHandler} />}
       <Routes>
-        <Route path='/' element={<News />} />
-        <Route path="/home" element={<Home />} />
+        <Route path='/' element={<AuthForm />} />
+        {userIsLoggedIn && <Route path="/home" element={<Home />} />}
         <Route path="/news" element={<News />} />
         <Route path="/wallet" element={<CartItem />} />
         <Route path="/login" element={<AuthForm />} />
-        <Route path="/login" element={<AuthForm />} />
+        <Route path="/logout" element={<AuthForm />} />
+        <Route path="/*" element={<AuthForm />} />
+
       </Routes>
     </div>
   );
