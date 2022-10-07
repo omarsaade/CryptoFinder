@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import React, { useCallback } from 'react';
 
 
 
@@ -25,6 +24,8 @@ const calculateRemainingTime = (expirationTime) => {
 }
 
 
+
+
 const retrieveStoredToken = () => {
     const storedToken = localStorage.getItem('token');// hsaye262
     const storedExpirationDate = localStorage.getItem('expirationTime');// 1,5 mins
@@ -39,7 +40,7 @@ const retrieveStoredToken = () => {
     return {
         token: storedToken,
         duration: remainingTime,
-        // isLoggedIn: false,
+        isLoggedIn: false,
 
     }
 }
@@ -57,16 +58,14 @@ const authSlice = createSlice({
             state.token = tokeno; // text
             localStorage.setItem('token', state.token);
             localStorage.setItem('expirationTime', expirationTime);
-            const remainingTime = calculateRemainingTime(expirationTime);
-            state.logoutTimer = setTimeout(authSlice.logout, remainingTime); //1000ms
             state.tokenData = retrieveStoredToken();
             let initialToken;
-
             if (state.tokenData) {
                 initialToken = state.tokenData.token; //eyJhbGciOiJwtdw
             }
             state.token = initialToken;
             state.userIsLoggedIn = !!state.token;
+
         },
         logout(state) {
             state.userIsLoggedIn = false;
@@ -76,21 +75,21 @@ const authSlice = createSlice({
             if (state.logoutTimer) {
                 clearTimeout(state.logoutTimer);
             }
+        },
+        persist(state) {
+            state.tokenData = retrieveStoredToken();
+            let initialToken;
+            if (state.tokenData) {
+                initialToken = state.tokenData.token; //eyJhbGciOiJwtdw
+            }
+            state.token = initialToken;
+            state.userIsLoggedIn = !!state.token;
         }
 
     }
 });
 
 
-// const logoutHandler = useCallback(() => {
-//     initialState.userIsLoggedIn = false;
-//     initialState.token = null;
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('expirationTime');
-//     if (initialState.logoutTimer) {
-//         clearTimeout(initialState.logoutTimer);
-//     }
-// }, []);
 
 
 
@@ -98,3 +97,5 @@ export const authActions = authSlice.actions;
 
 
 export default authSlice;
+
+

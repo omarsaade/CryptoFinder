@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import logo from '../../assets/crypto.png'
 import classes from './AuthForm.module.css';
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,25 +16,23 @@ const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const tokenData = useSelector(state => state.auth.tokenData);
-  let logoutTimer = useSelector(state => state.auth.logoutTimer);
+
 
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(authActions.logout());
+    }, tokenData.duration);
+  }, [tokenData]);
+
+
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
-
-
-
-
-
-
-
-
-
 
 
   const submitHandler = (event) => {
@@ -94,15 +92,6 @@ const AuthForm = () => {
         // console.log(err);
       });
   };
-
-
-  // useEffect(() => {
-  //   // console.log("hello");
-  //   if (tokenData) {
-  //     console.log(tokenData.duration);
-  //     logoutTimer = setTimeout(dispatch(authActions.logout()), tokenData.duration); //1000ms
-  //   }
-  // }, [tokenData]);
 
 
 

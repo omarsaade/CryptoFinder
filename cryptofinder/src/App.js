@@ -8,13 +8,21 @@ import { uiActions } from './store/Slice/ui-slice';
 import Cart from './components/Cart/Cart';
 import AuthForm from './components/Auth/AuthForm';
 import Logout from './pages/Logout';
-
+import React, { useEffect } from 'react';
+import { authActions } from './store/Slice/auth-slice';
 
 
 function App() {
   const dispatch = useDispatch();
   const show = useSelector(state => state.ui.show);
-  const userIsLoggedIn = useSelector(state => state.auth.userIsLoggedIn);
+  let userIsLoggedIn = useSelector(state => state.auth.userIsLoggedIn);
+
+
+
+
+
+
+
 
   // console.log(userIsLoggedIn); // false
   const toggleCartHandler = () => {
