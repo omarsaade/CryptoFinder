@@ -7,9 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from './store/Slice/ui-slice';
 import Cart from './components/Cart/Cart';
 import AuthForm from './components/Auth/AuthForm';
-// import Logout from './pages/Logout';
-import React, { useEffect } from 'react';
-// import { authActions } from './store/Slice/auth-slice';
+import React from 'react';
 
 
 
@@ -18,10 +16,6 @@ function App() {
   const show = useSelector(state => state.ui.show);
   let userIsLoggedIn = useSelector(state => state.auth.userIsLoggedIn);
 
-
-
-
-  // console.log(userIsLoggedIn); // false
   const toggleCartHandler = () => {
     dispatch(uiActions.toggleCart());
   }

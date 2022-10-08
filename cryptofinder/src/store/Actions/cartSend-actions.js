@@ -15,7 +15,7 @@ export const sendCartData = createAsyncThunk(
         // console.log(cart);
         const response = await fetch(`${firebaseUrl}/cart.json`, config);
         if (!response.ok) throw new Error();
-        const data = await response.json();
+        // const data = await response.json();
 
 
 

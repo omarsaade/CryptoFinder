@@ -81,3 +81,9 @@
   padding: 13px;
   border-radius: 20px;
 }
+
+.auth p {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}

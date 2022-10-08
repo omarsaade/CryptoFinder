@@ -74,15 +74,6 @@ const authSlice = createSlice({
                 clearTimeout(state.logoutTimer);
             }
         },
-        persist(state) {
-            state.tokenData = retrieveStoredToken();
-            let initialToken;
-            if (state.tokenData) {
-                initialToken = state.tokenData.token; //eyJhbGciOiJwtdw
-            }
-            state.token = initialToken;
-            state.userIsLoggedIn = !!state.token;
-        }
 
     }
 });

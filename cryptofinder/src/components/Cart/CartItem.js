@@ -1,5 +1,5 @@
 import classes from './CartItem.module.css';
-import Cart from './Cart';
+// import Cart from './Cart';
 
 const CartItem = (props) => {
     // const price = `$${props.price.toFixed(2)}`;

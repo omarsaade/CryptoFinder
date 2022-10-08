@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Modal from '../UI/Modal/Modal';
 import classes from './Cart.module.css'
 import CartItem from './CartItem';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { fetchWalletData } from "../../store/Actions/fetchcart-actions";
 
 

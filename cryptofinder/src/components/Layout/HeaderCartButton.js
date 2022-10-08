@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classes from './HeaderCartButton.module.css'
 import CartIcon from '../Cart/CartIcon'
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from '../../store/Slice/ui-slice';
-import { walletActions } from '../../store/Slice/wallet-slice';
 // import { fetchWalletData } from '../../store/Actions/fetchcart-actions';
 
 function HeaderCartButton() {

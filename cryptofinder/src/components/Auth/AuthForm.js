@@ -7,11 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-// let logoutTimer;
 
 const AuthForm = () => {
   const dispatch = useDispatch();
-  // const history = useHistory();
   const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -26,7 +24,7 @@ const AuthForm = () => {
     setTimeout(() => {
       dispatch(authActions.logout());
     }, tokenData.duration);
-  }, [tokenData]);
+  }, [dispatch, tokenData]);
 
 
 
@@ -67,7 +65,7 @@ const AuthForm = () => {
 
         setIsLoading(false);
         if (res.ok) {
-          return res.json(); // console.log(res);
+          return res.json();
         } else {
 
           let errorMessage = 'Authentication failed!';
@@ -89,7 +87,6 @@ const AuthForm = () => {
       })
       .catch((err) => {
         alert(err.message);
-        // console.log(err);
       });
   };
 
