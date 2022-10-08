@@ -10,17 +10,15 @@ const initialState = {
 };
 
 
-// let logoutTimer;
 
 
 
 //calculating remaining Time
 const calculateRemainingTime = (expirationTime) => {
-    const currentTime = new Date().getTime(); //time now 11000ms
-    //erpiration time me3tberbina string bteje
-    const adjExpirationTime = new Date(expirationTime).getTime();//time baad se3a 12000ms
-    const remainingDuration = adjExpirationTime - currentTime;// 1000ms
-    return remainingDuration; //nes se3a 1000ms
+    const currentTime = new Date().getTime();
+    const adjExpirationTime = new Date(expirationTime).getTime();
+    const remainingDuration = adjExpirationTime - currentTime;
+    return remainingDuration;
 }
 
 
