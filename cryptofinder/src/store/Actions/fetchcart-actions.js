@@ -46,23 +46,6 @@ export const fetchWalletData = createAsyncThunk(
         }
         let newArr = Object.values(new_obj);
 
-
-
-
-
-
-        // let obj = {};
-        // for (let trans of Tb) {
-        //     if (obj.trans.name) {
-        //         obj.trans.name.amount += trans.amount;
-        //     } else {
-        //         obj.trans.name = { ...trans }
-        //     }
-        // }
-
-        // let m = Object.values(obj);
-        // console.log(m);
-
         return {
             newArr,
             totalPrice,

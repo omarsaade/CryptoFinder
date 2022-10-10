@@ -13,10 +13,6 @@ const persistConfig = {
     storage
 }
 
-// const customizedMiddleware = getDefaultMiddleware({
-//     serializableCheck: false
-// })
-
 
 const reducer = combineReducers({
     ui: uiSlice.reducer,
