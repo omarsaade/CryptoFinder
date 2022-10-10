@@ -27,27 +27,12 @@ function Cart(props) {
         dispatch(fetchWalletData());
     }
 
+    // const object1 = {};
 
     const cartItemRemoveHandler = async (itemK) => {
-        const existingCartItemIndex = walletItems.findIndex(
-            (item) => item.id === itemK // -1 bcz no match found  m1=m1
-        );
-
-        const existingItem = walletItems[existingCartItemIndex];//{}
+        var existingCartItemIndex = walletItems.findIndex((item) => item.id === itemK);
+        var existingItem = walletItems[existingCartItemIndex];
         console.log(existingItem);
-        // const updatedTotalAmount = state.totalAmount - existingItem.price; // 44 - 22 = 22,99
-        let updatedItems;
-        if (existingItem.amount === 1) {
-            updatedItems = walletItems.filter(item => item.id !== itemK);
-        } else {
-            const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
-            updatedItems = [...walletItems];
-            updatedItems[existingCartItemIndex] = updatedItem;
-        }
-        // 
-        return {
-            items: updatedItems,
-        };
 
     }
 
