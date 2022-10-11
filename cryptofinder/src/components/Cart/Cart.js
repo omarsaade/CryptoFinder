@@ -27,14 +27,23 @@ function Cart(props) {
         dispatch(fetchWalletData());
     }
 
-    // const object1 = {};
+
+
+
+
+
+
 
     const cartItemRemoveHandler = async (itemK) => {
-        var existingCartItemIndex = walletItems.findIndex((item) => item.id === itemK);
+        var existingCartItemIndex = walletItems.findIndex((item) => item.id === itemK); // true
         var existingItem = walletItems[existingCartItemIndex];
-        console.log(existingItem);
+        console.log(existingItem);  // {id: 0, amount: 17, name: 'Bitcoin', price: 19252}
+        //??
 
     }
+
+
+
 
 
 

@@ -20,6 +20,7 @@ function App() {
     dispatch(uiActions.toggleCart());
   }
 
+
   return (
     <div>
       <MainHeader />
