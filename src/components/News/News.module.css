@@ -1,0 +1,27 @@
+.modal {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  list-style: none;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* .NewsLoading {
+  margin-top: 500px;
+  text-align: center;
+  color: white;
+}
+
+.NewsError {
+  margin-top: 500px;
+  text-align: center;
+  color: red;
+} */
